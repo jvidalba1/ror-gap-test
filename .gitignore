@@ -20,4 +20,4 @@
 /db/*.sql*
 /config/application.yml
 /config/config.yml
-config/database.yml
+/config/database.yml
