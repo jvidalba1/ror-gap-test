@@ -19,6 +19,11 @@ class Person < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  def age
+    now = DateTime.now
+    now.year - birthdate.year - ((now.month > birthdate.month || (now.month == birthdate.month && now.day >= birthdate.day)) ? 0 : 1)
+  end
+
   def birthdate_cannot_be_in_the_future
     if (birthdate.present?) && (birthdate > Date.today)
       errors.add(:birthdate, "can't be in the future")
