@@ -17,4 +17,10 @@ class Person < ActiveRecord::Base
       errors.add(:birthdate, "can't be in the future")
     end
   end
+
+  def person_created_email
+  end
+
+  def person_deleted_email
+  end
 end
