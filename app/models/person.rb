@@ -6,11 +6,18 @@ class Person < ActiveRecord::Base
   validates :last_name, presence: true, length: { :maximum => 75 }
   validates :email, presence: true, uniqueness: true, :length => { :maximum => 75 }, format: { with: EMAIL_REGEX, message: "must be a valid email" }
   validates :job, allow_blank: true, length: { maximum: 75 }
-  validates :gender, presence: true, inclusion: { in: %w(Male Female) }
+  validates :gender, presence: true#, inclusion: { in: ["Male", "Female"] }
   validates :birthdate, presence: true
   validate :birthdate_cannot_be_in_the_future
 
-  enum gender: ["Male", "Female"]
+  # enum gender: ["Male", "Female"]
+
+  after_create :person_created_email
+  after_destroy :person_deleted_email
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 
   def birthdate_cannot_be_in_the_future
     if (birthdate.present?) && (birthdate > Date.today)
@@ -19,8 +26,12 @@ class Person < ActiveRecord::Base
   end
 
   def person_created_email
+    people = Person.where("id != ?", self.id)
+    people.each { |person| PeopleMailer.person_created(self.full_name, person.id).deliver_later }
   end
 
   def person_deleted_email
+    people = Person.where("id != ?", self.id)
+    people.each { |person| PeopleMailer.person_deleted(self.full_name, person.id).deliver_later }
   end
 end

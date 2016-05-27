@@ -1,0 +1,48 @@
+<%= form_for @person do |f| %>
+  <% if @person.errors.any? %>
+    <ul>
+      <% @person.errors.full_messages.each do |message| %>
+        <li> 
+          <%= message %> 
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+  <table>
+    <tr>
+      <td><%= f.label :first_name %></td>
+      <td><%= f.text_field :first_name %></td>
+
+      <td><%= f.label :last_name %></td>
+      <td><%= f.text_field :last_name %></td>      
+    </tr>
+
+    <tr>
+      <td><%= f.label :email %></td>
+      <td><%= f.text_field :email %></td>
+
+      <td><%= f.label :job %></td>
+      <td><%= f.text_field :job %></td>      
+    </tr>
+
+    <tr>
+      <td><%= f.label :bio %></td>
+      <td><%= f.text_area :bio %></td>
+
+      <td><%= f.label :gender %></td>
+      <td><%= f.select :gender, ["Male", "Female"] %></td>      
+    </tr>
+
+    <tr>
+      <td><%= f.label :birthdate %></td>
+      <td><%= f.date_select :birthdate %></td>
+
+      <td><%= f.label :picture %></td>
+      <td><%= f.text_field :picture %></td>      
+    </tr>
+
+    <tr>
+      <td><%= f.submit 'Submit' %></td>
+    </tr>
+  </table>
+<% end %>
