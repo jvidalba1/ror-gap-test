@@ -20,7 +20,8 @@ ActiveRecord::Schema.define(version: 20160527160805) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email",      limit: 254
-    t.text     "job"
+    t.string   "job"
+    t.text     "bio"
     t.string   "gender"
     t.date     "birthdate"
     t.string   "picture"
