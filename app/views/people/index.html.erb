@@ -11,7 +11,7 @@
   <tbody>
     <% @people.each do |person| %>
       <tr>
-        <td><%= person.full_name %></td>
+        <td><%= link_to person.full_name, person_path(person) %></td>
         <td><%= person.email %></td>
         <td><%= person.age %></td>
         <td><%= link_to "Delete", person, method: :delete, data: { confirm: "Are you sure?" }%></td>
