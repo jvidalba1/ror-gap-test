@@ -18,3 +18,14 @@
     gender: ["Male", "Female"].sample
   )
 end
+
+Person.create(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    job: Faker::Company.profession,
+    bio: Faker::Lorem.paragraph,
+    picture: "",
+    birthdate: Faker::Date.backward(19000),
+    gender: ["Male", "Female"].sample
+  )

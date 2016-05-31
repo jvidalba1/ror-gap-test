@@ -30,7 +30,7 @@
       <td><%= f.text_area :bio %></td>
 
       <td><%= f.label :gender %></td>
-      <td><%= f.select :gender, ["Male", "Female"] %></td>      
+      <td><%= f.select :gender, Person.genders.keys %></td>      
     </tr>
 
     <tr>
@@ -38,7 +38,7 @@
       <td><%= f.date_select :birthdate %></td>
 
       <td><%= f.label :picture %></td>
-      <td><%= f.text_field :picture %></td>      
+      <td><%= f.file_field :picture %></td>      
     </tr>
 
     <tr>

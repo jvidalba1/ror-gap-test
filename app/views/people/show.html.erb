@@ -1,6 +1,7 @@
+
 <table border="1">
   <tr>
-    <td rowspan="2">Picture</td>
+    <td rowspan="2"><%= image_tag @person.picture.url %></td>
     <td><%= @person.full_name %></td>
   </tr>
   <tr>
@@ -22,8 +23,11 @@
     <td>Bio</td>
     <td><%= @person.bio %></td>
   </tr>
+  <td rowspan="4">Actions</td>
   <tr>
     <td><%= link_to "Edit information", edit_person_path(@person) %></td>
+  </tr>
+  <tr>
     <td><%= link_to "Delete", @person, method: :delete, data: { confirm: "Are you sure?" } %></td>
   </tr>
   <tr>

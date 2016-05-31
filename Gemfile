@@ -16,12 +16,15 @@ gem 'resque'
 gem 'resque-scheduler'
 gem 'resque-pool'
 gem 'mailcatcher'
+gem 'carrierwave'
 
 group :development do 
   gem "letter_opener"
 end
 
 group :development, :test do
+  gem 'better_errors'
+  gem "binding_of_caller"
   gem 'faker'
   gem 'byebug'
   gem 'web-console', '~> 2.0'
