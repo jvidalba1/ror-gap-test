@@ -17,6 +17,7 @@ gem 'resque-scheduler'
 gem 'resque-pool'
 gem 'mailcatcher'
 gem 'carrierwave'
+gem 'bootstrap-sass'
 
 group :development do 
   gem "letter_opener"

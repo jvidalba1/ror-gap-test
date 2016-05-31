@@ -1,21 +1,31 @@
+<%= link_to "Add person", new_person_path, class: "btn btn-default" %>
 <h1>People index</h1>
-<table border=1>
-  <thead>
-    <tr>
-      <th>Full name</th>
-      <th>Email</th>
-      <th>Age</th>
-      <th>Actions</th>
-    </tr>
-  </thead>  
-  <tbody>
-    <% @people.each do |person| %>
-      <tr>
-        <td><%= link_to person.full_name, person_path(person) %></td>
-        <td><%= person.email %></td>
-        <td><%= person.age %></td>
-        <td><%= link_to "Delete", person, method: :delete, data: { confirm: "Are you sure?" }%></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Full name</th>
+          <th>Email</th>
+          <th>Age</th>
+          <th>Actions</th>
+        </tr>
+      </thead>  
+      <tbody>
+        <% @people.each do |person| %>
+          <tr>
+            <td><%= link_to person.full_name, person_path(person) %></td>
+            <td><%= person.email %></td>
+            <td><%= person.age %></td>
+            <td>
+              <div class="btn-group" role="group">
+                <%= link_to "Delete", person, method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger' %>
+                <%= link_to "Edit", edit_person_path(person), class: 'btn btn-default' %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
