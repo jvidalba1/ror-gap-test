@@ -15,6 +15,7 @@
     resque-scheduler
     resque-pool
     mailcatcher
+    foreman
     carrierwave
     bootstrap-sass
     better_errors
@@ -23,19 +24,42 @@
 
 ### Setting up
 - Download project from Github:
+ 
 > `git clone https://github.com/jvidalba1/ror-gap-test.git`
+
 - Start postgres
+
 - Database configuration: Go to ror-gap-test folder and execute in the console
+
 > `rake db:setup`
+
 - Test suite configuration:
+
 > `rake test`
 
 ### Run app
-- In a console, go to ror-gap-test and run `mailcatcher`, after this please go to `http://127.0.0.1:1080/` in the browser, this is to see all emails sent by the application.
 
-- Still in ror-gap-test please run `QUEUE=mailers bundle exec rake environment resque:work`, in order to start a queue where all jobs will be executed.
 
-- In other console and placed in ror-gap-test folder, execute `rake environment resque:scheduler`.
+- Start all application processes, placed in ror-gap-test folder, execute in the console:
 
-- The last command is to start application server, in other console execute `rails server`, and go to `localhost:3000` in the browser to interact with the application.
+> `foreman start`
+
+With this command, it executes rails server in port 3000, creates the resque worker, resque scheduler and mailcatcher, if you get an error with mailcatcher like this:
+
+```shell
+00:07:39 mail.1   | Starting MailCatcher
+00:07:39 mail.1   | ~~> ERROR: Something's using port 1025. Are you already running MailCatcher?
+```
+
+you can kill the process with the following commands and after this execute again `foreman start`:
+
+```shell
+> lsof -nP -iTCP:1025 -sTCP:LISTEN
+
+COMMAND   PID     USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
+ruby    26705 jvidalba    9u  IPv4 0x53073a8fd42acf45      0t0  TCP 127.0.0.1:1025 (LISTEN)
+
+> kill 26705
+```
+
   
