@@ -15,12 +15,13 @@ gem 'annotate'
 gem 'resque'
 gem 'resque-scheduler'
 gem 'resque-pool'
-gem 'mailcatcher'
 gem 'carrierwave'
 gem 'bootstrap-sass'
 
 group :development do 
   gem "letter_opener"
+  gem "foreman"
+  gem "mailcatcher"
 end
 
 group :development, :test do
