@@ -62,4 +62,5 @@ ruby    26705 jvidalba    9u  IPv4 0x53073a8fd42acf45      0t0  TCP 127.0.0.1:10
 > kill 26705
 ```
 
+- If everything is working, go to `localhost:3000` to interact with the application, and `localhost:1080` to see all emails sent.
   
